@@ -1,5 +1,6 @@
 package com.omega.gilmar.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,24 +14,26 @@ import org.springframework.format.annotation.NumberFormat;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "caixa")
 public class Caixa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
 	@EqualsAndHashCode.Include
+	@Column(name = "codigo_caixa")
 	private Long id;
 	
 	@NotBlank
 	private String descricao;
 	
-	@NotBlank
+	@NotNull
 	@NumberFormat(pattern = "0.00")
 	private double saldoInicial;
 }
